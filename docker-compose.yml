@@ -4,13 +4,16 @@ elasticsearch:
   ports:
     - "9200:9200"
     - "9300:9300"
+  volumes:
+    # - /Users/abhinav/projects/docker-elk/elasticsearch/data:/usr/share/elasticsearch/data
+    - /tmp/esdata:/usr/share/elasticsearch/data
 logstash:
   image: logstash:latest
   command: logstash -f /etc/logstash/conf.d/logstash.conf
   volumes:
     - ./logstash/config:/etc/logstash/conf.d
   ports:
-    - "5000:5000"
+    - "5044:5044"
   links:
     - elasticsearch
 kibana:
