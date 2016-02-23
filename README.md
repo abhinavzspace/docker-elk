@@ -170,3 +170,11 @@ elasticsearch:
 ```
 
 This will store elasticsearch data inside `/path/to/storage`.
+
+
+
+## STEPS
+
+First run `docker-compose up` inside current directory
+Run `sudo ./packetbeat -e -c packetbeat.yml -d "publish"` from [packetbeat folder](https://www.elastic.co/guide/en/beats/packetbeat/1.1/packetbeat-installation.html)
+
