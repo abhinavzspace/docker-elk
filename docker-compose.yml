@@ -1,12 +1,11 @@
 elasticsearch:
   image: elasticsearch:latest
-  command: elasticsearch -Des.network.host=0.0.0.0
+  command: /bin/bash -c 'usermod -u 1000 elasticsearch; gosu elasticsearch elasticsearch -Des.network.host=0.0.0.0'
   ports:
     - "9200:9200"
     - "9300:9300"
   volumes:
-    # - /Users/abhinav/projects/docker-elk/elasticsearch/data:/usr/share/elasticsearch/data
-    - /tmp/esdata:/usr/share/elasticsearch/data
+    - /Users/abhinav/elasticsearch/data:/usr/share/elasticsearch/data
 logstash:
   image: logstash:latest
   command: logstash -f /etc/logstash/conf.d/logstash.conf
