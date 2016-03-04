@@ -5,7 +5,10 @@ elasticsearch:
     - "9200:9200"
     - "9300:9300"
   volumes:
+    - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     - /Users/abhinav/elasticsearch/data:/usr/share/elasticsearch/data
+    - /Users/abhinav/elasticsearch/backups:/mount/backups/sf_backup
+    # https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-snapshots.html
 logstash:
   image: logstash:latest
   command: logstash -f /etc/logstash/conf.d/logstash.conf
